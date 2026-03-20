@@ -8,7 +8,6 @@ public class SceneLoader : MonoBehaviour
     
     public float transitionTime = 1f;
 
-    // This is what your BUTTON will call
     public void LoadSceneByName(string sceneName)
     {
         StartCoroutine(LoadSceneRoutine(sceneName));

@@ -961,6 +961,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: transitions
       objectReference: {fileID: 0}
+    - target: {fileID: 2601113706797407491, guid: 827d4814cf75a514bb0bc9d98c8765e7, type: 3}
+      propertyPath: transitionTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8534270693345425608, guid: 827d4814cf75a514bb0bc9d98c8765e7, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
