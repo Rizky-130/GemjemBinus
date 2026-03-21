@@ -14,4 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ComputerPOV.unity
     guid: 11eb81c6947b9af4ab104d2d0c90fa3d
+  - enabled: 1
+    path: Assets/Scenes/Level 1.unity
+    guid: 5d5d079ee59e82b4a86188a8f0dd9c4a
+  - enabled: 1
+    path: Assets/Scenes/Level 2.unity
+    guid: f58c85882ab3e324e9da4a8c47e88e34
+  - enabled: 1
+    path: Assets/Scenes/Level 3.unity
+    guid: ed9bc22509ac2a14c945cf9ad86b8c16
   m_configObjects: {}
