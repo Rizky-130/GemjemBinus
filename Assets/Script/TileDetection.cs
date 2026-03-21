@@ -12,7 +12,10 @@ public class TileDetection : MonoBehaviour
 
     bool isOut = false;
 
-
+    void Start()
+    {
+        Cursor.visible = false;
+    }
     void Update()
     {
         Vector3 worldpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
