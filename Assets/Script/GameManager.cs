@@ -5,6 +5,7 @@ public class GameManager : MonoBehaviour
     public GameObject startUI;
     public GameObject pathObject;
     public GameObject timerUI;
+    public GameObject nextLVbutton;
 
     public bool gameStarted = false;
 
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
         startUI.SetActive(true);
         pathObject.SetActive(false);
         timerUI.SetActive(false);
+        nextLVbutton.SetActive(false);
     }
 
     public void StartGame()
@@ -23,5 +25,6 @@ public class GameManager : MonoBehaviour
         startUI.SetActive(false);
         pathObject.SetActive(true);
         timerUI.SetActive(true);
+        nextLVbutton.SetActive(true);
     }
 }

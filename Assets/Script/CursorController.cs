@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class CursorController : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class CursorController : MonoBehaviour
 
     bool isResetting = false;
     float resetTimer = 0f;
+
+    List<RaycastResult> results = new List<RaycastResult>();
+    GameObject lastHovered;
 
     [Header("Movement")]
     public float sensitivity = 0.8f;
@@ -58,6 +62,7 @@ public class CursorController : MonoBehaviour
 
         rb.MovePosition(newPos);
         CheckUIClick();
+        CheckUI();
     }
 
     public void ResetToSpawn(Vector3 pos)
@@ -85,5 +90,36 @@ public class CursorController : MonoBehaviour
                 }
             }
         }
+    }
+    void CheckUI()
+    {
+        PointerEventData pointerData = new PointerEventData(EventSystem.current);
+        pointerData.position = Camera.main.WorldToScreenPoint(transform.position);
+
+        results.Clear();
+        EventSystem.current.RaycastAll(pointerData, results);
+
+        GameObject currentHovered = null;
+
+        foreach (RaycastResult result in results)
+        {
+            if (result.gameObject.GetComponent<Button>())
+            {
+                currentHovered = result.gameObject;
+                break;
+            }
+        }
+
+        // HOVER MASUK
+        if (currentHovered != lastHovered)
+        {
+            if (lastHovered != null)
+                ExecuteEvents.Execute(lastHovered, pointerData, ExecuteEvents.pointerExitHandler);
+
+            if (currentHovered != null)
+                ExecuteEvents.Execute(currentHovered, pointerData, ExecuteEvents.pointerEnterHandler);
+        }
+
+        lastHovered = currentHovered;
     }
 }

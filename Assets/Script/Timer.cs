@@ -6,19 +6,25 @@ public class Timer : MonoBehaviour
     public GameManager gameManager;
     public float timeLeft = 10f;
     public TextMesh timerText;
+    public HealthPoint hp;
+
+    bool isTimeUp = false;
 
     void Update()
     {
-        if (!gameManager.gameStarted)
+        if (!gameManager.gameStarted || isTimeUp)
             return;
 
         timeLeft -= Time.deltaTime;
 
-        timerText.text = Mathf.Ceil(timeLeft).ToString();
-
         if (timeLeft <= 0)
         {
-            Debug.Log("WAKTU HABIS!");
+            timeLeft = 0;
+            isTimeUp = true;
+
+            hp.Die();
         }
+
+        timerText.text = Mathf.Ceil(timeLeft).ToString();
     }
 }

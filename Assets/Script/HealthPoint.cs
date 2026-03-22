@@ -20,6 +20,7 @@ public class HealthPoint : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        loseMenuPrefab.SetActive(false);
     }
 
     public void TakeDamage(int amount)
@@ -54,13 +55,13 @@ public class HealthPoint : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         Debug.Log("GAME OVER");
 
         if (loseMenuPrefab != null)
         {
-            Instantiate(loseMenuPrefab);
+            loseMenuPrefab.SetActive(true); 
         }
 
         if (tilemapCollider != null)
