@@ -11,23 +11,26 @@ public class CollisionReset : MonoBehaviour
     public float damageCooldown = 1f;
     float lastDamageTime = -999f;
     void OnCollisionEnter2D(Collision2D collision)
-{
-    if (!gameManager.gameStarted)
-        return;
-
-    if (collision.gameObject.CompareTag("Wall"))
-    {
-        if (Time.time - lastDamageTime >= damageCooldown)
         {
-            Debug.Log("KENA!");
+            if (!gameManager.gameStarted)
+                return;
 
-            healthpoint.TakeDamage(1);
-            alarm.Play();
+            if (healthpoint != null && healthpoint.currentHealth <= 0)
+                return;
 
-            lastDamageTime = Time.time;
+            if (collision.gameObject.CompareTag("Wall"))
+            {
+                if (Time.time - lastDamageTime >= damageCooldown)
+                {
+                    Debug.Log("KENA!");
 
-            cursor.ResetToSpawn(spawnPoint.position);
+                    healthpoint.TakeDamage(1);
+                    alarm.Play();
+
+                    lastDamageTime = Time.time;
+
+                    cursor.ResetToSpawn(spawnPoint.position);
+                }
+            }
         }
-    }
-}
 }
